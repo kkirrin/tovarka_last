@@ -30,33 +30,31 @@ $product_sku = $product->get_sku();
 $product_price = $product->get_price_html();
 $product_id = $product->get_id();
 $product_desc = $product->get_description();
-$product_amount = $product ->get_stock_quantity();
+$product_amount = $product->get_stock_quantity();
 
 
-
-
-
-
-// echo '<pre>';
-// print_r($array);
-// echo '</pre>';
-
-/**
- * Hook: woocommerce_before_single_product.
- *
- * @hooked woocommerce_output_all_notices - 10
- */
-do_action('woocommerce_before_single_product');
-
-if (post_password_required()) {
-	echo get_the_password_form(); // WPCS: XSS ok.
-	return;
-}
 ?>
+<div class="container">
+
+
+	<?
+	/**
+	 * Hook: woocommerce_before_single_product.
+	 *
+	 * @hooked woocommerce_output_all_notices - 10
+	 */
+	do_action('woocommerce_before_single_product');
+
+	if (post_password_required()) {
+		echo get_the_password_form(); // WPCS: XSS ok.
+		return;
+	}
+	?>
+</div>
 <div class="container">
 	<div id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
 		<h1 class="title single-product">
-				<?php echo $product_title ?>
+			<?php echo $product_title ?>
 		</h1>
 		<div class="single-product__wrapper">
 			<?php
